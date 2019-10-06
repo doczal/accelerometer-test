@@ -3,48 +3,28 @@ import Bottle from './Bottle';
 import './App.css';
 
 function App() {
-  const [permission, setPermission] = useState(false);
   const [acc, setAcc] = useState({ x: 0, y: 0, z: 0 });
 
   const handleAcceleration = (e) => {
     console.log(e);
-    setAcc({
-      x: e.acceleration.x,
-      y: e.acceleration.y,
-      z: e.acceleration.z,
-    });
+    const { x, y, z } = e.accelerationIncludingGravity;
+    setAcc({ x, y, z });
   };
 
   //Did mount
   useEffect(() => {
     window.addEventListener('devicemotion', handleAcceleration);
-    // queryPermission().then((result) => {
-    //   setPermission(result);
-    //   if (result) {
-    //     console.log('it works');
-    //     window.addEventListener('devicemotion', handleAcceleration);
-    //   }
-    // });
   }, []);
 
   return (
     <div className="App">
-      <h1>{`x: ${acc.x}, y: ${acc.y}, z: ${acc.z}`}</h1>
+      <h1>{`x: ${acc.x && acc.x.toFixed(2)}, y: ${acc.y &&
+        acc.y.toFixed(2)}, z: ${acc.z && acc.z.toFixed(2)}`}</h1>
       <div className="container">
         <Bottle />
       </div>
     </div>
   );
-}
-
-async function queryPermission() {
-  const result = await navigator.permissions.query({
-    name: 'accelerometer',
-  });
-  if (result.state === 'granted') {
-    return true;
-  }
-  return false;
 }
 
 export default App;
