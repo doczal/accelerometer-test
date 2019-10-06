@@ -1,0 +1,7 @@
+.bottle {
+  width: 200px;
+  height: 480px;
+  background: aquamarine;
+  position: absolute;
+  border-radius: 32px 32px 0 0;
+}
