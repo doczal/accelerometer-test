@@ -21,7 +21,8 @@ function App() {
       <h1>{`x: ${acc.x && acc.x.toFixed(2)}, y: ${acc.y &&
         acc.y.toFixed(2)}, z: ${acc.z && acc.z.toFixed(2)}`}</h1>
       <div className="container">
-        <Bottle />
+        <Bottle rotated={Math.abs(acc.x)} position="left" />
+        <Bottle rotated={Math.abs(acc.x)} position="right" />
       </div>
     </div>
   );

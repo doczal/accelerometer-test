@@ -1,7 +1,28 @@
 .bottle {
-  width: 200px;
-  height: 480px;
+  width: 30%;
+  height: 70%;
   background: aquamarine;
   position: absolute;
+  bottom: 0;
   border-radius: 32px 32px 0 0;
+  transition: transform 0.3s ease-in;
+}
+
+.bottle.left {
+  left: 0;
+  transform-origin: bottom left;
+}
+
+.bottle.right {
+  background: hotpink;
+  right: 0;
+  transform-origin: bottom right;
+}
+
+.bottle.rotated.left {
+  transform: rotateZ(25deg);
+}
+
+.bottle.rotated.right {
+  transform: rotateZ(-25deg);
 }
